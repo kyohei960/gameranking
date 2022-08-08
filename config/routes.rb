@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
+  #管理者用url
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
-  }
-
+  } 
+  #ユーザー用url
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "member/registrations",
     sessions: 'member/sessions'
   }
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  #ユーザー側のルーティング設定
+  scope module: :member do
+    resources :games, only: [:index, :show]
+  end
+  #管理者側のルーティング設定
+  namespace :admin do
+    resources :games, only: [:new, :index, :show, :create, :destroy, :edit]
+  end
 end
