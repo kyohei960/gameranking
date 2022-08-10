@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   #ユーザー側のルーティング設定
   scope module: :member do
     root to: "homes#top"
-    resources :games, only: [:index, :show]
+    resources :games, only: [:index, :show] do
+      resources :game_comments, only: [:create, :destroy]
+    end
   end
   #管理者側のルーティング設定
   namespace :admin do
