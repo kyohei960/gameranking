@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     registrations: "member/registrations",
     sessions: 'member/sessions'
   }
+  #ゲストログイン用ルーティング設定
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
   #ユーザー側のルーティング設定
   scope module: :member do
     root to: "homes#top"
