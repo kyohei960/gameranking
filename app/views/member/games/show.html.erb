@@ -8,6 +8,12 @@
           <td><%= @game.body %></td>
         </tr>
       </table>
+      <div class="comments_area">
+        <%= render 'game_comments/comment', game: @game %>
+      </div>
+      <div id="new_comment">
+        <%= render 'game_comments/comment_form', game: @game, game_comment: @game_comment %>
+      </div>
     </div>
   </div>
 </div>

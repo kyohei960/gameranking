@@ -1,0 +1,9 @@
+<table>
+  <% game.game_comments.each do |game_comment| %>
+    <tr>
+      <td><%= game_comment.user.nickname %></td>
+      <td><%= game_comment.comment %></td>
+      <td><%= link_to "Destroy", game_game_comment_path(game_comment.game, game_comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %></td>
+    </tr>
+  <% end %>
+</table>
