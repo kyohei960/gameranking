@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <table class='table'>
+        <tr>
+          <td><%= image_tag @game.get_image, size:'100x100' %></td>
+          <td><%= @game.title %></td>
+          <td><%= @game.body %></td>
+          <td><%= link_to 'Edit', edit_admin_game_path(@game), class: "btn btn-sm btn-success edit_game_#{@game.id}" %></td>
+          <td><%= link_to 'Destroy', @game, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_game_#{@game.id}" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

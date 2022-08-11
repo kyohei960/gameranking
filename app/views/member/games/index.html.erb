@@ -1,0 +1,16 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>タイトル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= image_tag game.get_image, size:'70x70' %></td>
+        <td><%= game.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
