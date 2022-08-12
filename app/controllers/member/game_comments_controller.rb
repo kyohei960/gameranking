@@ -19,5 +19,5 @@ class Member::GameCommentsController < ApplicationController
     params.require(:game_comment).permit(:game_comment)
   end
 
-end
+
 end
