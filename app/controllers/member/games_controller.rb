@@ -1,4 +1,5 @@
 class Member::GamesController < ApplicationController
+  
   def index
     @games = Game.all
   end
