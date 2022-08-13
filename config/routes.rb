@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   #ユーザー側のルーティング設定
   scope module: :member do
     root to: "homes#top"
+    get '/about' => 'homes#about', as: 'about'
+    
     resources :games, only: [:index, :show] do
       resources :game_comments, only: [:create, :destroy]
     end
