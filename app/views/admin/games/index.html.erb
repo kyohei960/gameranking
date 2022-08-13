@@ -11,8 +11,14 @@
         <tbody>
           <% @games.each do |game| %>
             <tr>
-              <td><%= image_tag game.get_image, size:'70x70' %></td>
-              <td><%= game.title %></td>
+              <td><%= link_to admin_game_path(game.id) do %>
+                    <%= image_tag game.get_image(70,70) %>
+                  <% end %>
+              </td>
+              <td><%= link_to admin_game_path(game.id) do %>
+                    <%= game.title %>
+                  <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

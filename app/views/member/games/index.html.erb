@@ -11,7 +11,7 @@
         <tbody>
           <% @games.each do |game| %>
             <tr>
-              <td><%= image_tag game.get_image, size:'70x70' %></td>
+              <td><%= image_tag game.get_image(70,70) %></td>
               <td><%= game.title %></td>
             </tr>
           <% end %>

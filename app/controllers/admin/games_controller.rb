@@ -11,19 +11,19 @@ class Admin::GamesController < ApplicationController
       redirect_to :new
     end
   end
-  
+
   def index
     @games = Game.all
   end
-  
+
   def show
     @game = Game.find(params[:id])
   end
-  
+
   def edit
     @game = Game.find(params[:id])
   end
-  
+
   def update
     @game = Game.find(params[:id])
     if @game.update(admin_game_params)
@@ -31,6 +31,12 @@ class Admin::GamesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @game = Game.find(params[:id])
+    @game.destroy
+    redirect_to admin_games_path
   end
 
   private

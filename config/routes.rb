@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   #管理者側のルーティング設定
   namespace :admin do
     root to: "homes#top"
-    resources :games, only: [:new, :index, :show, :create, :destroy, :edit] do
+    resources :games, only: [:new, :index, :show, :create, :destroy, :edit, :update] do
       resources :game_comments, only: [:create, :destroy]
     end
   end
