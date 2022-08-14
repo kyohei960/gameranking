@@ -6,10 +6,8 @@
             <div class="card mb-6">
               <header class="card-header">
                 <p class="card-header-title">
-                  <%= link_to game_path(game.id) do %>
                     <%= image_tag game.get_image(70,70) %>
                     <%= game.title %>
-                  <% end %>
                 </p>
               </header>
             </div>
@@ -17,15 +15,22 @@
               <div class="content">
                 <div class="content average-score">
                   <div class="star-rating mb-2">
-                    <div class="star-rating-front" style="width: %">★★★★★</div>
+                    <div class="star-rating-front" style="width: <%= game.review_score_percentage %>%">★★★★★</div>
                     <div class="star-rating-back">★★★★★</div>
                   </div>
                   <div class="average-score-display ml-3 pt-2">
+                    <%= game.avg_score %>点（<%= game.reviews.count %>件のレビュー）
                   </div>
                 </div>
               </div>
             </div>
             <footer class="card-footer">
+              <%= link_to game_reviews_path(game), class: "button card-footer-item" do %>
+                レビューを見る
+              <% end %>
+              <%= link_to game_path(game), class: "button card-footer-item" do %>
+                レビューを書く
+              <% end %>
             </footer>
           <% end %>
         </tbody>

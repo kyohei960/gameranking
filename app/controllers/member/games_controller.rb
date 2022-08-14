@@ -1,5 +1,5 @@
 class Member::GamesController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:show]
   def index
     @games = Game.all
   end

@@ -39,20 +39,32 @@
         <ul class="navbar-start">
           <% if admin_signed_in? %>
             <% if request.fullpath.include? "/admin" %>
+              <li>
+                <%= link_to "ゲーム一覧", admin_games_path %>
+              </li>
               <li class="nav-item">
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'button' %>
               </li>
             <% else %>
+              <li>
+                <%= link_to "ゲーム一覧", admin_games_path %>
+              </li>
               <li class="nav-item">
                 <%= link_to "概要", about_path, class: 'button' %>
               </li>
             <% end %>
           <% elsif  user_signed_in? %>
             <div class="d-flex align-items-center text-white">ようこそ、<%= current_user.nickname %>さん!</div>
+            <li>
+              <%= link_to "ゲーム一覧", games_path %>
+            </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'button' %>
             </li>
           <% else %>
+            <li>
+              <%= link_to "ゲーム一覧", games_path %>
+            </li>
             <li class="nav-item">
               <%= link_to "概要", about_path, class: 'button' %>
             </li>
