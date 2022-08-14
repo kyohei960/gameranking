@@ -6,8 +6,10 @@
             <div class="card mb-6">
               <header class="card-header">
                 <p class="card-header-title">
-                  <%= image_tag game.get_image(70,70) %>
-                  <%= game.title %>
+                  <%= link_to game_path(game.id) do %>
+                    <%= image_tag game.get_image(70,70) %>
+                    <%= game.title %>
+                  <% end %>
                 </p>
               </header>
             </div>

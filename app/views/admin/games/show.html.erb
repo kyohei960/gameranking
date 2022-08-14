@@ -1,15 +1,29 @@
-<div class="container">
-  <div class="row">
-    <div class="mx-auto">
-      <table class='table'>
-        <tr>
-          <td><%= image_tag @game.get_image(100,100) %></td>
-          <td><%= @game.title %></td>
-          <td><%= @game.body %></td>
-          <td><%= link_to 'Edit', edit_admin_game_path(@game), class: "btn btn-sm btn-success edit_game_#{@game.id}" %></td>
-          <td><%= link_to 'Destroy', @game, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_game_#{@game.id}" %></td>
-        </tr>
-      </table>
+<section class="section mt-6">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-5">
+        <div class="card mb-6">
+          <header class="card-header">
+            <p class="card-header-title">
+              <%= image_tag @game.get_image(70,70) %>
+              <%= @game.title %>
+              <%= @game.body %>
+            </p>
+          </header>
+        </div>
+        <div class="card-content">
+          <div class="content">
+            <div class="content average-score">
+              <div class="star-rating mb-2">
+                <div class="star-rating-front" style="width: %">★★★★★</div>
+                <div class="star-rating-back">★★★★★</div>
+              </div>
+              <div class="average-score-display ml-3 pt-2">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
