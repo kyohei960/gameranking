@@ -1,5 +1,5 @@
 class Game < ApplicationRecord
-    has_many :game_comments, dependent: :destroy
+    has_many :reviews, dependent: :destroy
     has_one_attached :image
 
     def get_image(width,height)
