@@ -14,6 +14,8 @@
               <%= @game.body %>
             </p>
           </header>
+          <%= link_to '編集', edit_admin_game_path(@game), class: "btn btn-sm btn-success edit_admin_game_#{@game.id}" %>
+          <%= link_to '削除', admin_game_path(@game), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
         </div>
         <div class="card-content">
           <div class="content">

@@ -5,12 +5,14 @@
           <% @games.each do |game| %>
             <div class="card mb-6">
               <header class="card-header">
-                <p class="card-header-image">
-                  <%= image_tag game.get_image(70,70) %>
-                </p>
-                <p class="card-header-title">
-                  <%= game.title %>
-                </p>
+                <%= link_to admin_game_path(game), class: "text-dark" do %>
+                  <p class="card-header-image">
+                    <%= image_tag game.get_image(70,70) %>
+                  </p>
+                  <p class="card-header-title">
+                    <%= game.title %>
+                  </p>
+                <% end %>
               </header>
             </div>
             <div class="card-content">

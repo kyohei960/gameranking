@@ -6,6 +6,9 @@ class Member::ReviewsController < ApplicationController
   end
 
   def create
+    if current_user.email == "guest@example.com"
+      redirect_back(fallback_location: root_path)
+    end
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save

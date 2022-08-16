@@ -13,15 +13,29 @@
             <div class="card-content">
             <div class="content average-score">
               <div class="star-rating mb-2">
-                <div class="star-rating-front" style="width: <%= @game.review_score_percentage %>%">★★★★★</div>
-                <div class="star-rating-back">★★★★★</div>
+                <div id="star<%= @game.id %>"></div>
               </div>
               <div class="average-score-display ml-3 pt-2">
                 <%= @game.avg_score %>点（<%= @game.reviews.count %>件のレビュー）
               </div>
             </div>
           </div>
-        <%= render '/member/reviews/form', review: @review, game: @game %>
+          <script>
+            $('#star<%= @game.id %>').raty({
+              size     : 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= @game.reviews.average(:score).to_f.round(1) %>,
+            });
+          </script>
+          <% if user_signed_in? %>
+            <% if current_user.email != "guest@example.com" %>
+              <%= render '/member/reviews/form', review: @review, game: @game %>
+            <% end %>
+          <% end %>
       </div>
     </div>
   </div>
