@@ -8,9 +8,9 @@ class Member::GamesController < ApplicationController
       @games = Game.all.order(created_at: :desc)
     end
     @tag_lists = Tag.all
-    @games = Kaminari.pagenate_array(games).page(params[page]).per(10)
+    @games = Kaminari.pagenate_array(@games).page(params[:page]).per(9)
   end
-  
+
   def show
     @game = Game.find(params[:id])
     @review = Review.new

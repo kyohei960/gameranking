@@ -1,56 +1,59 @@
-<section class="section mt-6">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-5">
-          <% @games.each do |game| %>
-            <div class="card mb-6">
-              <header class="card-header">
-                <p class="card-header-image">
-                  <%= image_tag game.get_image(70,70) %>
-                </p>
-                <p class="card-header-title">
-                  <%= game.title %>
-                </p>
-              </header>
+<div class="container">
+  <% @tag_lists.each do |list| %>
+    <%= link_to list.tag_name, games_path(tag_id: list.id), class 'tag-list' %>
+  <% end %>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <% @games.each do |game| %>
+        <div class="card md-4 shadow-sm">
+          <img class="card-img-top">
+            <%= image_tag game.get_image(70,70) %>
+          </img>
+          <div class="card-review">
+            <div id="star<%= game.id %>"></div>
+          </div>
+          <div class="card-title">
+            <div class="card-tag">
+              <% game.tags.each do |tag| %>
+                <%= link_to "##{tag.tag_name}", games_path(tag_id: list.id), class: 'smaller tag-list' %>
+              <% end %>
             </div>
-            <div class="card-content">
-              <div class="content">
-                <div class="content average-score">
-                  <div class="star-rating mb-2">
-                    <div id="star<%= game.id %>"></div>
-                  </div>
-                  <div class="average-score-display ml-3 pt-2">
-                    <%= game.avg_score %>点（<%= game.reviews.count %>件のレビュー）
-                  </div>
-                </div>
+            <p class="card-text"><%= game.title %></p>
+            <div class="d-flex justify-content-between align-games-center">
+              <div class="btn-group">
+                <button type="button" class="button button-sm btn-outline-secondary">
+                  <%= link_to game_reviews_path(game) do %>
+                    レビューを見る
+                  <% end %>
+                </button>
+                <button type="button" class="button button-sm btn-outline-secondary">
+                  <% if user_signed_in? %>
+                    <% if current_user.email != "guest@example.com" %>
+                      <%= link_to game_path(game), class: "button card-footer-item" do %>
+                      レビューを書く
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </button>
+                <small class="text-muted"><%= game.avg_score %>点（<%= game.reviews.count %>件のレビュー）</small>
               </div>
             </div>
-            <script>
-              $('#star<%= game.id %>').raty({
-                size     : 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: true,
-                readOnly: true,
-                score: <%= game.reviews.average(:score).to_f.round(1) %>,
-              });
-            </script>
-            <footer class="card-footer">
-              <%= link_to game_reviews_path(game), class: "button card-footer-item" do %>
-                レビューを見る
-              <% end %>
-              <% if user_signed_in? %>
-                <% if current_user.email != "guest@example.com" %>
-                  <%= link_to game_path(game), class: "button card-footer-item" do %>
-                    レビューを書く
-                  <% end %>
-                <% end %>
-              <% end %>
-            </footer>
-          <% end %>
-        </tbody>
-      </div>
+          </div>
+          <script>
+            $('#star<%= game.id %>').raty({
+              size     : 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= game.reviews.average(:score).to_f.round(1) %>,
+            });
+          </script>
+        </div>
+      <% end %>
     </div>
   </div>
-</section>
+</div>

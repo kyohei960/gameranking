@@ -28,11 +28,6 @@ class Game < ApplicationRecord
     image.variant(resize_to_limit: [width,height]).processed
   end
 
-  #検索メソッド、タイトルと内容をあいまい検索する
-  def self.games_serach(search)
-    Game.where(['title LIKE ?', "%#{search}%"])
-  end
-
   def save_games(tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - tags
