@@ -5,9 +5,13 @@ class Admin::GamesController < ApplicationController
 
   def create
     @game = Game.new(admin_game_params)
+    tag_list = params[:game][:tag_name].split(nil)
+    @game.image.attach(params[:game][:image])
     if @game.save
+      @game.save_games(tag_list)
       redirect_to admin_games_path(@game.id)
     else
+      flash.now[:alert] = '投稿に失敗'
       redirect_to :new
     end
   end
