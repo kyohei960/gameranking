@@ -1,0 +1,51 @@
+<section class="section mt-6">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-5">
+        <div class="card mb-6">
+          <header class="card-header">
+            <p class="card-header-image">
+              <%= image_tag @game.get_image(70,70) %>
+            </p>
+            <p class="card-header-title">
+              <%= @game.title %>
+            </p>
+            <p class="card-header-body">
+              <%= @game.body %>
+            </p>
+          </header>
+          <%= link_to '編集', edit_admin_game_path(@game), class: "btn btn-sm btn-success edit_admin_game_#{@game.id}" %>
+          <%= link_to '削除', admin_game_path(@game), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+        </div>
+        <div class="card-content">
+          <div class="content">
+            <div class="content average-score">
+              <div class="star-rating mb-2">
+                <div id="star<%= @game.id %>"></div>
+              </div>
+              <div class="average-score-display ml-3 pt-2">
+                <%= @game.avg_score %>点（<%= @game.reviews.count %>件のレビュー）
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          $('#star<%= @game.id %>').raty({
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @game.reviews.average(:score).to_f.round(1) %>,
+          });
+        </script>
+        <footer class="card-footer">
+          <%= link_to admin_game_reviews_path(@game), class: "button card-footer-item" do %>
+            レビューを見る
+          <% end %>
+        </footer>
+      </div>
+    </div>
+  </div>
+</section>

@@ -15,13 +15,17 @@ Rails.application.routes.draw do
   #ユーザー側のルーティング設定
   scope module: :member do
     root to: "homes#top"
-    resources :games, only: [:index, :show]
+    get '/about' => 'homes#about', as: 'about'
+
+    resources :games, only: [:index, :show] do
+      resources :reviews, only: [:index, :create, :destroy]
+    end
   end
   #管理者側のルーティング設定
   namespace :admin do
     root to: "homes#top"
-    resources :games, only: [:new, :index, :show, :create, :destroy, :edit] do
-      resources :game_comments, only: [:create, :destroy]
+    resources :games, only: [:new, :index, :show, :create, :destroy, :edit, :update] do
+      resources :reviews, only: [:index, :destroy]
     end
   end
 end
