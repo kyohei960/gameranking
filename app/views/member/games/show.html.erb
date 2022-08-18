@@ -9,7 +9,7 @@
                 <%= @game.title %>
                 <%= @game.body %>
                 <% @game.tags.each do |tag| %>
-                  <%= "##{tag.tag_name}", class:'smaller tag-list' %>
+                  <%= link_to "##{tag.tag_name}", game_path(tag), class:'smaller tag-list' %>
                 <% end %>
               </p>
             </header>

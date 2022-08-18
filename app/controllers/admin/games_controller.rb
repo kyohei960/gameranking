@@ -30,9 +30,7 @@ class Admin::GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    tag_list = params[:game][:tag_name].split(nil)
     if @game.update(admin_game_params)
-      @game.update_games(tag_list)
       redirect_to admin_game_path(@game.id)
     else
       render :edit

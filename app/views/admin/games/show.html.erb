@@ -5,7 +5,7 @@
         <div class="card mb-6">
           <header class="card-header">
             <p class="card-header-image">
-              <%= image_tag @game.get_image(70,70) %>
+              <%= image_tag @game.get_image(100,100) %>
             </p>
             <p class="card-header-title">
               <%= @game.title %>
@@ -15,7 +15,7 @@
             </p>
             <p class="card-header-tag">
               <% @game.tags.each do |tag| %>
-                <%= link_to "##{tag.tag_name}", games_path(tag_id: list.id), class: 'smaller tag-list' %>
+                <%= link_to "##{tag.tag_name}", admin_games_path(tag), class: 'smaller tag-list' %>
               <% end %>
             </p>
           </header>

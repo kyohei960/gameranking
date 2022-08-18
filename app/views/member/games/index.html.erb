@@ -6,19 +6,19 @@
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
-        <% @games.each do |game| %>
+      <% @games.each do |game| %>
+        <div class="col-md-4">
           <div class="card md-4 shadow-sm">
-            <img class="card-img-top">
+            <div class="card-img-top">
               <%= image_tag game.get_image(500,500) %>
-            </img>
+            </div>
             <div class="card-review">
               <div id="star<%= game.id %>"></div>
             </div>
             <div class="card-title">
               <div class="card-tag">
                 <% game.tags.each do |tag| %>
-                  <%= link_to "##{tag.tag_name}", games_path(tag_id: list.id), class: 'smaller tag-list' %>
+                  <%= link_to "##{tag.tag_name}", games_path(tag), class: 'smaller tag-list' %>
                 <% end %>
               </div>
               <p class="card-text"><%= game.title %></p>
@@ -50,8 +50,8 @@
               });
             </script>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
