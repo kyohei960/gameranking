@@ -8,12 +8,16 @@
           <%= f.file_field :image, accept: "image/*", class:"form-control-file game_image" %>
         </div>
         <div class="form-group">
-          <label for="item_name">ゲーム名</label>
+          <label for="game_name">ゲーム名</label>
           <%= f.text_field :title, class:"form-control title" %>
         </div>
         <div class="form-group">
-          <label for="item_description">ゲーム内容</label>
+          <label for="game_description">ゲーム内容</label>
           <%= f.text_area :body, class:"form-control body" %>
+        </div>
+        <div class="form-group">
+          <label for="game_tag">ゲームタグ</label>
+          <%= f.text_field :tag_name, class:"form-control tag_name" %>
         </div>
         <div class="form-group">
           <%= f.submit '変更を保存', class:"btn btn-success" %>

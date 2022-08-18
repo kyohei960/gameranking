@@ -13,6 +13,11 @@
             <p class="card-header-body">
               <%= @game.body %>
             </p>
+            <p class="card-header-tag">
+              <% @game.tags.each do |tag| %>
+                <%= link_to "##{tag.tag_name}", games_path(tag_id: list.id), class: 'smaller tag-list' %>
+              <% end %>
+            </p>
           </header>
           <%= link_to '編集', edit_admin_game_path(@game), class: "btn btn-sm btn-success edit_admin_game_#{@game.id}" %>
           <%= link_to '削除', admin_game_path(@game), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>

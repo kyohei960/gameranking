@@ -13,6 +13,11 @@
             <p class="card-header-body">
               <%= @game.body %>
             </p>
+            <p class="card-header-tag_name">
+              <% @game.tags.each do |tag| %>
+                <%= link_to "##{tag.tag_name}", games_path(tag_id: list.id), class: 'smaller tag-list' %>
+              <% end %>
+            </p>
           </header>
           <div class="card-content">
             <div class="content average-score">
@@ -41,6 +46,17 @@
             <% end %>
           </tbody>
         </table>
+        <script>
+          $('#star<%= @game.id %>').raty({
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @game.reviews.average(:score).to_f.round(1) %>,
+          });
+        </script>
       </div>
     </div>
   </div>

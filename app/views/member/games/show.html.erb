@@ -8,6 +8,9 @@
                 <%= image_tag @game.get_image(70,70) %>
                 <%= @game.title %>
                 <%= @game.body %>
+                <% @game.tags.each do |tag| %>
+                  <%= "##{tag.tag_name}", class:'smaller tag-list' %>
+                <% end %>
               </p>
             </header>
             <div class="card-content">
