@@ -10,7 +10,7 @@
         <div class="col-md-4">
           <div class="card md-4 shadow-sm">
             <div class="card-img-top">
-              <%= image_tag game.get_image(500,500) %>
+              <%= image_tag game.get_image(300,300) %>
             </div>
             <div class="card-review">
               <div id="star<%= game.id %>"></div>
@@ -28,13 +28,13 @@
                   <button type="button" class="button button-sm btn-outline-secondary">
                     <%= link_to 'レビューを見る', game_reviews_path(game), class: "text-dark" %>
                   </button>
-                  <button type="button" class="button button-sm btn-outline-secondary">
-                    <% if user_signed_in? %>
-                      <% if current_user.email != "guest@example.com" %>
+                  <% if user_signed_in? %>
+                    <% if current_user.email != "guest@example.com" %>
+                      <button type="button" class="button button-sm btn-outline-secondary">
                         <%= link_to 'レビューを書く', game_path(game), class: "text-dark" %>
-                      <% end %>
+                      </button>
                     <% end %>
-                  </button>
+                  <% end %>
                 </div>
               </div>
             </div>
