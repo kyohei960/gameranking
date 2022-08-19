@@ -33,7 +33,7 @@
         <table class="table is-fullwidth has-text-centered">
           <thead>
             <tr>
-              <th>ユーザー</th><th>点数</th><th>内容</th>
+              <th>ユーザー</th><th>点数</th><th>内容</th><th></th>
             </tr>
           </thead>
           <tbody>
@@ -42,6 +42,7 @@
                 <td><%= review.user.nickname %></td>
                 <td><%= review.score %></td>
                 <td><%= review.content %></td>
+                <td><%= link_to "削除", admin_game_review_path(@game,review), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
               </tr>
             <% end %>
           </tbody>
