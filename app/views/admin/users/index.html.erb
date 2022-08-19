@@ -20,15 +20,14 @@
           </tr>
         </thead>
         <tbody>
-          <% if false %>以下のif文はゲストユーザーをユーザー一覧に載せないための記述 <% end %>
-            <% @users.each do |user| %>
-              <tr>
-                <td><%= user.id %></td>
-                <td><%= user.nickname %></td>
-                <td><%= user.email %></td>
-                <td><%= link_to 'アカウント削除', admin_user_path(user), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
-              </tr>
-            <% end %>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.nickname %></td>
+              <td><%= user.email %></td>
+              <td><%= link_to 'アカウント削除', admin_user_path(user), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
       <%= paginate @users %>
