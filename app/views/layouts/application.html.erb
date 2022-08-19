@@ -40,6 +40,9 @@
           <% if admin_signed_in? %>
             <% if request.fullpath.include? "/admin" %>
               <li>
+                <%= link_to "ユーザー管理一覧", admin_users_path %>
+              </li>
+              <li>
                 <%= link_to "ゲーム一覧", admin_games_path %>
               </li>
               <li class="nav-item">
@@ -62,7 +65,6 @@
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'button' %>
             </li>
           <% else %>
-
             <li>
               <%= link_to "ゲーム一覧", games_path %>
             </li>
