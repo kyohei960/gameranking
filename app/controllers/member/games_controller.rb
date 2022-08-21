@@ -5,7 +5,6 @@ class Member::GamesController < ApplicationController
       @tag = Tag.find(params[:tag_id])
       @games = @tag.games.order(created_at: :desc)
     else
-
       @games = Game.
               left_joins(:reviews).
               distinct.
