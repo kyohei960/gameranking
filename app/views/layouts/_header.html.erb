@@ -5,61 +5,67 @@
         <strong class="is-size-3" style="font-family: cursive; color: black;">game ranking</strong>
       <% end %>
     </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <div class="collapse navbar-collapse justify-content-center">
-    <% if user_signed_in? %>
-      <div class="navbar-nav text-light font-weight-bold d-inline-block">
-        ようこそ、<%= current_user.nickname %>さん！
+      <% if user_signed_in? %>
+        <div class="navbar-nav text-light font-weight-bold d-inline-block">
+          ようこそ、<%= current_user.nickname %>さん！
+        </div>
+      <% end %>
       </div>
-    <% end %>
-    </div>
-    <ul class="navbar-nav ml-auto">
-      <% if admin_signed_in? %>
-        <% if request.fullpath.include? "/admin" %>
-          <li>
-            <%= link_to admin_users_path, class: "btn btn-outline-light" do %>
-              <i class="fa-thin fa-users"></i>ユーザー管理一覧
-            <% end %>
-          </li>
-          <li>
-            <%= link_to admin_games_path, class: "btn btn-outline-light" do %>
-              <i class="fa-thin fa-alien-8bit"></i>ゲーム一覧
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_admin_games_path, class: "btn btn-outline-light" do %>
-              <i class="fa-thin fa-circle-plus"></i>ゲーム投稿
+      <ul class="navbar-nav ml-auto">
+        <% if admin_signed_in? %>
+          <% if request.fullpath.include? "/admin" %>
+            <li class="nav-item">
+              <%= link_to admin_users_path, class: "btn btn-outline-light" do %>
+                <i class="fas fa-users"></i>ユーザー管理一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to admin_games_path, class: "btn btn-outline-light" do %>
+                <i class="fas fa-alien-monster"></i>ゲーム一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_admin_games_path, class: "btn btn-outline-light" do %>
+                <i class="fa-thin fa-circle-plus"></i>ゲーム投稿
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_admin_session_path, method: :delete, class: "btn btn-outline-light" do %>
+                <i class="fad fa-portal-enter"></i></i>ログアウト
+              <% end %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to admin_games_path, class: "btn btn-outline-light" do %>
+                <i class="fas fa-alien-monster"></i>ゲーム一覧
+              <% end %>
+            </li>
+          <% end %>
+        <% elsif  user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to games_path, class: "btn btn-outline-light" do %>
+              <i class="fal fa-alien-monster"></i>ゲーム一覧
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to destroy_admin_session_path, method: :delete, class: "btn btn-outline-light" do %>
-              <i class="fa-thin fa-arrow-right-from-bracket"></i>ログアウト
+            <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-outline-light" do %>
+              <i class="far fa-portal-exit"></i>ログアウト
             <% end %>
           </li>
         <% else %>
-          <li>
-            <%= link_to admin_games_path, class: "btn btn-outline-light" do %>
-              <i class="fa-thin fa-alien-8bit"></i>ゲーム一覧
+          <li class="nav-item">
+            <%= link_to games_path, class: "btn btn-outline-light" do %>
+              <i class="fal fa-alien-monster"></i>ゲーム一覧
             <% end %>
           </li>
         <% end %>
-      <% elsif  user_signed_in? %>
-        <li>
-          <%= link_to games_path, class: "btn btn-outline-light" do %>
-            <i class="fa-thin fa-alien-8bit"></i>ゲーム一覧
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-outline-light" do %>
-            <i class="fa-thin fa-arrow-right-from-bracket"></i>ログアウト
-          <% end %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to games_path, class: "btn btn-outline-light" do %>
-            <i class="fa-thin fa-alien-8bit"></i>ゲーム一覧
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+      </ul>
+    </div>
   </nav>
 </header>
