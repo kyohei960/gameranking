@@ -10,7 +10,7 @@
         <div class="col-md-4">
           <div class="card md-4 shadow-sm">
             <div class="card-img-top">
-              <%= image_tag game.get_image(300,300) %>
+              <%= image_tag game.get_image(300,300), class: 'hoge' %>
             </div>
             <div class="card-review">
               <div id="star<%= game.id %>"></div>
@@ -55,3 +55,14 @@
     </div>
   </div>
 </div>
+
+<style>
+.card-tag {
+  height: 50px;
+}
+
+.hoge {
+  width: 300px;
+  height: 300px;
+}
+</style>
