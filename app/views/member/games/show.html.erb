@@ -9,7 +9,7 @@
                 <%= @game.title %>
                 <%= @game.body %>
                 <% @game.tags.each do |tag| %>
-                  <%= link_to "##{tag.tag_name}", game_path(tag), class:'smaller tag-list' %>
+                  <%= link_to "##{tag.tag_name}", games_path(tag_id: tag), class: 'smaller tag-list' %>
                 <% end %>
               </p>
             </header>
@@ -24,6 +24,7 @@
             </div>
           </div>
           <script>
+            $('#star<%= @game.id %>').empty();
             $('#star<%= @game.id %>').raty({
               size     : 36,
               starOff:  '<%= asset_path('star-off.png') %>',

@@ -1,12 +1,11 @@
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row">
-      
       <% @games.each do |game| %>
         <div class="col-md-4">
           <div class="card md-4 shadow-sm">
             <div class="card-img-top">
-              <%= image_tag game.get_image(300,300) %>
+              <%= image_tag game.get_image(300,300), class: 'game-image img-fluid' %>
             </div>
             <div class="card-review">
               <div id="star<%= game.id %>"></div>
@@ -14,7 +13,7 @@
             <div class="card-title">
               <div class="card-tag">
                 <% game.tags.each do |tag| %>
-                  <%= link_to "##{tag.tag_name}", admin_games_path(tag), class: 'smaller tag-list' %>
+                  <%= link_to "##{tag.tag_name}", admin_games_path(tag_id: tag), class: 'smaller tag-list' %>
                 <% end %>
               </div>
               <p class="card-text"><%= game.title %></p>
@@ -31,6 +30,7 @@
               </div>
             </div>
             <script>
+              $('#star<%= game.id %>').empty();
               $('#star<%= game.id %>').raty({
                 size     : 36,
                 starOff:  '<%= asset_path('star-off.png') %>',

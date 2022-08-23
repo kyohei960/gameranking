@@ -44,6 +44,7 @@
               </div>
             </div>
             <script>
+              $('#star<%= game.id %>').empty();
               $('#star<%= game.id %>').raty({
                 size     : 36,
                 starOff:  '<%= asset_path('star-off.png') %>',
