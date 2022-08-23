@@ -3,6 +3,7 @@ class Game < ApplicationRecord
   has_one_attached :image
   has_many :tagmaps, dependent: :destroy
   has_many :tags, through: :tagmaps
+  belongs_to :genre
   def avg_score
     unless self.reviews.empty?
       reviews.average(:score).round(1).to_f

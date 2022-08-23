@@ -1,8 +1,15 @@
+<div class=" d-flex align-items-center justify-content-center pt-5">
+  <div class="container">
+    <div class="row">
+    </div>
+  </div>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-11 col-md-8 col-lg-6 mx-auto">
-      <div class="card shadow">
+      <div class="card mt-4 shadow">
         <div class="card-body text-secondary">
+          <div class="card-title border-bottom mb-3"><h3>ログイン</h3></div>
           <%= form_with model: @user, url: user_session_path do |f| %>
             <div>
               <br>

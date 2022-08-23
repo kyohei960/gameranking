@@ -1,16 +1,21 @@
 <div class="container">
-  <% @tag_lists.each do |list| %>
-    <%= link_to list.tag_name, games_path(tag_id: list.id), class:'tag-list' %>
+  <%= form_tag("/games", method: :get) do %>
+    <select name="genre">
+      <% Genre.all.each do |g| %>
+        <option value="<%= g.id %>"><%= g.name %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="search game" />
   <% end %>
 </div>
-<div class="album py-5 bg-light">
+<div class="album py-5">
   <div class="container">
     <div class="row">
       <% @games.each do |game| %>
-        <div class="col-md-4">
-          <div class="card md-4 shadow-sm">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card mb-4 shadow-sm">
             <div class="card-img-top">
-              <%= image_tag game.get_image(300,300), class: 'hoge' %>
+              <%= image_tag game.get_image(300,300), class: 'game-image img-fluid' %>
             </div>
             <div class="card-review">
               <div id="star<%= game.id %>"></div>
@@ -18,7 +23,7 @@
             <div class="card-title">
               <div class="card-tag">
                 <% game.tags.each do |tag| %>
-                  <%= link_to "##{tag.tag_name}", games_path(tag), class: 'smaller tag-list' %>
+                  <%= link_to "##{tag.tag_name}", games_path(tag_id: tag), class: 'smaller tag-list' %>
                 <% end %>
               </div>
               <p class="card-text"><%= game.title %></p>
@@ -56,13 +61,3 @@
   </div>
 </div>
 
-<style>
-.card-tag {
-  height: 50px;
-}
-
-.hoge {
-  width: 300px;
-  height: 300px;
-}
-</style>

@@ -4,6 +4,8 @@ class Member::GamesController < ApplicationController
     if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
       @games = @tag.games.order(created_at: :desc)
+    elsif params[:genre] != nil
+      @games = Game.where(genre_id: params[:genre])
     else
       @games = Game.
               left_joins(:reviews).
