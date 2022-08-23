@@ -46,11 +46,11 @@
             score: <%= @game.reviews.average(:score).to_f.round(1) %>,
           });
         </script>
-        <footer class="card-footer">
-          <%= link_to admin_game_reviews_path(@game), class: "button card-footer-item" do %>
+        <div class="card-footer">
+          <%= link_to admin_game_reviews_path(@game), class: "btn btn-light" do %>
             レビューを見る
           <% end %>
-        </footer>
+        </div>
       </div>
     </div>
   </div>
