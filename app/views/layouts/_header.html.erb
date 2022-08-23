@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg shadow-sm">
     <div class="navbar-brand col-1">
       <%= link_to root_path do %>
-        <img src="/assets/logo1.png" alt="ロゴ" width="180" height="45">
+        <img src="/assets/logo2.png" alt="ロゴ" width="180" height="45">
       <% end %>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -27,41 +27,41 @@
             </li>
             <li class="nav-item">
               <%= link_to admin_games_path, class: "btn btn-outline-light" do %>
-                <i class="fas fa-alien-monster"></i>ゲーム一覧
+                <i class="fas fa-chess"></i>ゲーム一覧
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to new_admin_game_path, class: "btn btn-outline-light" do %>
-                <i class="fa-thin fa-circle-plus"></i>ゲーム投稿
+                <i class="fas fa-plus-circle"></i>ゲーム投稿
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to destroy_admin_session_path, method: :delete, class: "btn btn-outline-light" do %>
-                <i class="fad fa-portal-enter"></i></i>ログアウト
+                <i class="fas fa-sign-out-alt"></i>ログアウト
               <% end %>
             </li>
           <% else %>
             <li class="nav-item">
               <%= link_to admin_games_path, class: "btn btn-outline-light" do %>
-                <i class="fas fa-alien-monster"></i>ゲーム一覧
+                <i class="fas fa-chess"></i>ゲーム一覧
               <% end %>
             </li>
           <% end %>
         <% elsif  user_signed_in? %>
           <li class="nav-item">
             <%= link_to games_path, class: "btn btn-outline-light" do %>
-              <i class="fas fa-user"></i>ゲーム一覧
+              <i class="fas fa-chess"></i>ゲーム一覧
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-outline-light" do %>
-              <i class="far fa-portal-exit"></i>ログアウト
+              <i class="fas fa-sign-out-alt"></i>ログアウト
             <% end %>
           </li>
         <% else %>
           <li class="nav-item">
             <%= link_to games_path, class: "btn btn-outline-light" do %>
-              <i class="fal fa-alien-monster"></i>ゲーム一覧
+              <i class="fas fa-chess"></i>ゲーム一覧
             <% end %>
           </li>
         <% end %>

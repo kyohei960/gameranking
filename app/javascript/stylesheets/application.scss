@@ -16,3 +16,25 @@ body {
   width: 100%;
 }
 
+//フッターのアイコンの部分の黒丸除去
+.social-link {
+  list-style: none;
+}
+
+//ヘッダー
+.nav-item {
+  margin-left: 20px;
+}
+
+.fooder-fixed {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 112px;
+  box-sizing: border-box;
+}
+
+footer {
+  position: absoulute;
+  bottom: 0;
+  width: 100%;
+}

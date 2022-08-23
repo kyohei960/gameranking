@@ -1,9 +1,19 @@
-<div class="album py-5 bg-light">
+<div class="container mt-2">
+  <%= form_tag("/games", method: :get) do %>
+    <select name="genre">
+      <% Genre.all.each do |g| %>
+        <option value="<%= g.id %>"><%= g.name %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="検索" />
+  <% end %>
+</div>
+<div class="album py-5">
   <div class="container">
     <div class="row">
       <% @games.each do |game| %>
-        <div class="col-md-4">
-          <div class="card md-4 shadow-sm">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card mb-4 shadow-sm">
             <div class="card-img-top">
               <%= image_tag game.get_image(300,300), class: 'game-image img-fluid' %>
             </div>

@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container mt-2">
   <%= form_tag("/games", method: :get) do %>
     <select name="genre">
       <% Genre.all.each do |g| %>
         <option value="<%= g.id %>"><%= g.name %></option>
       <% end %>
     </select>
-    <input type="submit" value="search game" />
+    <input type="submit" value="検索" />
   <% end %>
 </div>
 <div class="album py-5">
