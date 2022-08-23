@@ -13,6 +13,7 @@
               <p class="card-header-body">
                 <%= @game.body %>
               </p>
+              <p class="card-header-tag">
                 <% @game.tags.each do |tag| %>
                   <%= link_to "##{tag.tag_name}", games_path(tag_id: tag), class: 'smaller tag-list' %>
                 <% end %>
