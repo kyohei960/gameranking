@@ -17,8 +17,10 @@
     </div>
       <%= f.text_field :content, class: "text-are" %>
       <%= f.submit "保存", class: "button  mt-3" %>
-      <%= link_to "他のレビューを見る", game_reviews_path(game), class: "button light ml-3 mt-3" %>
+
+      <%= link_to "他のレビューを見る", game_reviews_path(game), class: "btn btn-light" %>
     <script>
+    $('#star').empty();
     $('#star').raty({
       size     : 36,
       starOff:  '<%= asset_path('star-off.png') %>',
