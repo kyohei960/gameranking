@@ -42,7 +42,6 @@ class Admin::GamesController < ApplicationController
     @tag_lists = Tag.all
     @games = Kaminari.paginate_array(@games).page(params[:page]).per(9)
   end
-  end
 
   def show
     @game = Game.find(params[:id])
