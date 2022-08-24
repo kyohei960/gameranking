@@ -26,6 +26,11 @@
                   <%= link_to "##{tag.tag_name}", admin_games_path(tag_id: tag), class: 'smaller tag-list' %>
                 <% end %>
               </div>
+              <div class="card-genre">
+                <% game.genres.each do |genre| %>
+                  <%= genre.genre_name %>
+                <% end %>
+              </div>
               <p class="card-text"><%= game.title %></p>
               <div class="card-score"><%= game.avg_score %>点（<%= game.reviews.count %>件のレビュー）</div>
               <div class="d-flex justify-content-between align-games-center">
@@ -55,5 +60,8 @@
         </div>
       <% end %>
     </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= paginate @games %>
   </div>
 </div>
