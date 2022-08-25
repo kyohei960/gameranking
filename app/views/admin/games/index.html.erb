@@ -27,9 +27,7 @@
                 <% end %>
               </div>
               <div class="card-genre">
-                <% game.genres.each do |genre| %>
-                  <%= genre.genre_name %>
-                <% end %>
+                <%= game.genre.name %>
               </div>
               <p class="card-text"><%= game.title %></p>
               <div class="card-score"><%= game.avg_score %>点（<%= game.reviews.count %>件のレビュー）</div>

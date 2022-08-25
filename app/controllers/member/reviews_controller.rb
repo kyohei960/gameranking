@@ -9,6 +9,7 @@ class Member::ReviewsController < ApplicationController
     if current_user.email == "guest@example.com"
       redirect_back(fallback_location: root_path)
     end
+    #byebug
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
@@ -22,6 +23,6 @@ class Member::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:game_id, :score, :content)
+    params.require(:review).permit(:score, :content).merge(game_id: params[:game_id])
   end
 end
