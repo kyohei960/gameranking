@@ -1,4 +1,6 @@
 class Admin::GamesController < ApplicationController
+  before_action :authenticate_admin!
+  
   def new
     @game = Game.new
   end
@@ -9,7 +11,7 @@ class Admin::GamesController < ApplicationController
     @game.image.attach(params[:game][:image])
     if @game.save
       @game.save_games(tag_list)
-      redirect_to admin_games_path(@game.id)
+      redirect_to admin_games_path
     else
       flash.now[:alert] = '投稿に失敗'
       redirect_to :new
