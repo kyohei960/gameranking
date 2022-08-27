@@ -10,7 +10,6 @@
   </div>
 <% end %>
 <div class="rating-box mt-3">
-  <%# byebug %>
   <%= form_with model: [game, review], url: game_reviews_path(game), method: :post, local: true do |f| %>
     <div id="star">
       <%= f.hidden_field :game_id, value: game.id %>

@@ -4,7 +4,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.references :user, null: false, foreign_key: true
       t.references :game, null: false, foreign_key: true
       t.string :content
-      t.integer :score
+      t.float :score
 
       t.timestamps
     end

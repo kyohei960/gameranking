@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2022_08_23_103512) do
     t.integer "user_id", null: false
     t.integer "game_id", null: false
     t.string "content"
-    t.integer "score"
+    t.float "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["game_id"], name: "index_reviews_on_game_id"
