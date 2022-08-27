@@ -5,3 +5,6 @@ ja:
     attributes:
       user:
         nickname: ニックネーム
+      game:
+        title: タイトル
+        body: ゲーム内容

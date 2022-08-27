@@ -1,6 +1,6 @@
 class Admin::GamesController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def new
     @game = Game.new
   end
@@ -14,7 +14,7 @@ class Admin::GamesController < ApplicationController
       redirect_to admin_games_path
     else
       flash.now[:alert] = '投稿に失敗'
-      redirect_to :new
+      render :new
     end
   end
 

@@ -37,3 +37,22 @@ footer {
   bottom: 0;
   width: 100%;
 }
+
+/*ページネーションのデザイン*/
+.pagination>span {
+  padding: 5px 10px;
+}
+
+.pagination>span>a {
+  border: none;
+  color: #ffffff;
+}
+
+.pagination>span.page.current {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>span>a:hover {
+  border-radius: 15px;
+}
