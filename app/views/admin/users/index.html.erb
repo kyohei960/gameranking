@@ -7,7 +7,6 @@
       <h3>ユーザー管理一覧</h3>
     </div>
   </div>
-
   <div class="row">
     <div class="col-lg-8">
       <table class="table">
@@ -22,15 +21,17 @@
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <td><%= user.id %></td>
-              <td><%= user.nickname %></td>
-              <td><%= user.email %></td>
+              <td class='text-white'><%= user.id %></td>
+              <td class='text-white'><%= user.nickname %></td>
+              <td class='text-white'><%= user.email %></td>
               <td><%= link_to 'アカウント削除', admin_user_path(user), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-      <%= paginate @users %>
     </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= paginate @users %>
   </div>
 </div>

@@ -1,4 +1,6 @@
 class Admin::GamesController < ApplicationController
+  before_action :authenticate_admin!
+
   def new
     @game = Game.new
   end
@@ -9,15 +11,38 @@ class Admin::GamesController < ApplicationController
     @game.image.attach(params[:game][:image])
     if @game.save
       @game.save_games(tag_list)
-      redirect_to admin_games_path(@game.id)
+      redirect_to admin_games_path
     else
       flash.now[:alert] = '投稿に失敗'
-      redirect_to :new
+      render :new
     end
   end
 
   def index
-    @games = Game.page(params[:page])
+    #タグで絞り込まれた場合
+    if params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id])
+      @games = @tag.games.order(created_at: :desc)
+    #ジャンルで検索された場合
+    elsif params[:genre] != nil
+      @games = Game.where(genre_id: params[:genre])
+    else
+      #評価が高い順に並べるようにするため
+      @games = Game.
+              left_joins(:reviews).
+              distinct.
+              sort_by do |game|
+                hoges = game.reviews
+                if hoges.present?
+                  hoges.map(&:score).sum / hoges.size
+                else
+                  0
+                end
+              end.
+              reverse
+    end
+    @tag_lists = Tag.all
+    @games = Kaminari.paginate_array(@games).page(params[:page]).per(9)
   end
 
   def show
@@ -46,6 +71,6 @@ class Admin::GamesController < ApplicationController
   private
 
   def admin_game_params
-    params.require(:game).permit(:title, :image, :body)
+    params.require(:game).permit(:title, :image, :body, :genre_id)
   end
 end

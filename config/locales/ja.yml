@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        nickname: ニックネーム
+      game:
+        title: タイトル
+        body: ゲーム内容
+      review:
+        content: コメント
+        score: 星

@@ -1,7 +1,7 @@
 <section class="section mt-6">
   <div class="container">
     <div class="columns is-centered">
-      <div class="column is-5">
+      <div class="column is-5 mt-5">
         <div class="card mb-6">
           <header class="card-header">
             <p class="card-header-image">
@@ -15,7 +15,7 @@
             </p>
             <p class="card-header-tag">
               <% @game.tags.each do |tag| %>
-                <%= link_to "##{tag.tag_name}", admin_games_path(tag), class: 'smaller tag-list' %>
+                <%= link_to "##{tag.tag_name}", admin_games_path(tag_id: tag), class: 'smaller tag-list' %>
               <% end %>
             </p>
           </header>
@@ -35,6 +35,7 @@
           </div>
         </div>
         <script>
+          $('#star<%= @game.id %>').empty();
           $('#star<%= @game.id %>').raty({
             size     : 36,
             starOff:  '<%= asset_path('star-off.png') %>',
@@ -45,11 +46,11 @@
             score: <%= @game.reviews.average(:score).to_f.round(1) %>,
           });
         </script>
-        <footer class="card-footer">
-          <%= link_to admin_game_reviews_path(@game), class: "button card-footer-item" do %>
+        <div class="card-footer">
+          <%= link_to admin_game_reviews_path(@game), class: "btn btn-light" do %>
             レビューを見る
           <% end %>
-        </footer>
+        </div>
       </div>
     </div>
   </div>

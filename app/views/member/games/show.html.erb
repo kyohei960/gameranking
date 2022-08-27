@@ -1,15 +1,21 @@
 <section class="section mt-6">
   <div class="container">
     <div class="columns is-centered">
-      <div class="column is-5">
+      <div class="column is-5 mt-5">
           <div class="card mb-6">
             <header class="card-header">
-              <p class="card-header-title">
+              <p class="card-header-image">
                 <%= image_tag @game.get_image(70,70) %>
+              </p>
+              <p class="card-header-title">
                 <%= @game.title %>
+              </p>
+              <p class="card-header-body">
                 <%= @game.body %>
+              </p>
+              <p class="card-header-tag">
                 <% @game.tags.each do |tag| %>
-                  <%= link_to "##{tag.tag_name}", game_path(tag), class:'smaller tag-list' %>
+                  <%= link_to "##{tag.tag_name}", games_path(tag_id: tag), class: 'smaller tag-list' %>
                 <% end %>
               </p>
             </header>
@@ -24,6 +30,7 @@
             </div>
           </div>
           <script>
+            $('#star<%= @game.id %>').empty();
             $('#star<%= @game.id %>').raty({
               size     : 36,
               starOff:  '<%= asset_path('star-off.png') %>',

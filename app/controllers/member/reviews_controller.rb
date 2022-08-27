@@ -14,14 +14,14 @@ class Member::ReviewsController < ApplicationController
     if @review.save
       redirect_to game_reviews_path(@review.game)
     else
-      @game = Game.find(params[:id])
-      render "games/show"
+      @game = Game.find(params[:game_id])
+      render "member/games/show"
     end
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:game_id, :score, :content)
+    params.require(:review).permit(:score, :content).merge(game_id: params[:game_id])
   end
 end
