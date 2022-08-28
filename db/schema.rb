@@ -78,12 +78,10 @@ ActiveRecord::Schema.define(version: 2022_08_23_103512) do
   end
 
   create_table "tagmaps", force: :cascade do |t|
-    t.integer "game_id", null: false
-    t.integer "tag_id", null: false
+    t.bigint "game_id", null: false
+    t.bigint "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["game_id"], name: "index_tagmaps_on_game_id"
-    t.index ["tag_id"], name: "index_tagmaps_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -110,6 +108,4 @@ ActiveRecord::Schema.define(version: 2022_08_23_103512) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "reviews", "games"
   add_foreign_key "reviews", "users"
-  add_foreign_key "tagmaps", "games"
-  add_foreign_key "tagmaps", "tags"
 end
