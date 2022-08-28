@@ -1,2 +1,58 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+body {
+  background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+}
+//高さを均等にするためにタグの高さを調節
+.card-tag {
+  height: 50px;
+}
+//画像を枠一杯にするため横と高さを指定
+.game-image {
+  object-fit: cover;
+  height: 300px;
+  width: 100%;
+}
+
+//フッターのアイコンの部分の黒丸除去
+.social-link {
+  list-style: none;
+}
+
+//ヘッダー
+.nav-item {
+  margin-left: 20px;
+}
+
+.fooder-fixed {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 112px;
+  box-sizing: border-box;
+}
+
+footer {
+  position: absoulute;
+  bottom: 0;
+  width: 100%;
+}
+
+/*ページネーションのデザイン*/
+.pagination>span {
+  padding: 5px 10px;
+}
+
+.pagination>span>a {
+  border: none;
+  color: #ffffff;
+}
+
+.pagination>span.page.current {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>span>a:hover {
+  border-radius: 15px;
+}

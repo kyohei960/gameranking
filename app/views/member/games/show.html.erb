@@ -1,0 +1,52 @@
+<section class="section mt-6">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-5 mt-5">
+          <div class="card mb-6">
+            <header class="card-header">
+              <p class="card-header-image">
+                <%= image_tag @game.get_image(70,70) %>
+              </p>
+              <p class="card-header-title">
+                <%= @game.title %>
+              </p>
+              <p class="card-header-body">
+                <%= @game.body %>
+              </p>
+              <p class="card-header-tag">
+                <% @game.tags.each do |tag| %>
+                  <%= link_to "##{tag.tag_name}", games_path(tag_id: tag), class: 'smaller tag-list' %>
+                <% end %>
+              </p>
+            </header>
+            <div class="card-content">
+            <div class="content average-score">
+              <div class="star-rating mb-2">
+                <div id="star<%= @game.id %>"></div>
+              </div>
+              <div class="average-score-display ml-3 pt-2">
+                <%= @game.avg_score %>点（<%= @game.reviews.count %>件のレビュー）
+              </div>
+            </div>
+          </div>
+          <script>
+            $('#star<%= @game.id %>').empty();
+            $('#star<%= @game.id %>').raty({
+              size     : 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= @game.reviews.average(:score).to_f.round(1) %>,
+            });
+          </script>
+          <% if user_signed_in? %>
+            <% if current_user.email != "guest@example.com" %>
+              <%= render '/member/reviews/form', review: @review, game: @game %>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</section>

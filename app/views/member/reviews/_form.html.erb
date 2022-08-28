@@ -1,0 +1,33 @@
+<p class="is-size-4 mb-3">レビュー</p>
+<% if review.errors.any? %>
+  <div class="notification is-danger">
+    <h2><%= review.errors.count %>件のエラーがあります。</h2>
+    <ul>
+      <% review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="rating-box mt-3">
+  <%= form_with model: [game, review], url: game_reviews_path(game), method: :post, local: true do |f| %>
+    <div id="star">
+      <%= f.hidden_field :game_id, value: game.id %>
+      <%= f.hidden_field :score, id: :review_star %>
+    </div>
+      <%= f.text_field :content, class: "text-are" %>
+      <%= f.submit "保存", class: "button  mt-3" %>
+
+      <%= link_to "他のレビューを見る", game_reviews_path(game), class: "btn btn-light" %>
+    <script>
+    $('#star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'review[score]',
+      half: true,
+    });
+    </script>
+  <% end %>
+</div>

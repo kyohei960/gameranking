@@ -1,14 +1,21 @@
-<div class="container .w-auto">
-  <div class="row">
-    <div class="col-lg-7 mb-5">
-      <div class="main_container">
-        <div class="title">
-          Gamerankingへようこそ！！<br>
-        </div>
-        <div class="image">
-          <%= image_tag "22947329.jpg", class: "main_image" %>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="p-5">
+  <h2 class="text-center text-white"><strong>Gamerankingへようこそ！</strong></h2>
+  <br>
+  <p class="text-center text-white"><strong>～体験したゲームのレビューを自由に～</strong></p>
+</div>
+<div class="p-2">
+  <p class="text-center text-white">会員の方はこちらのログインをクリック</p>
+  <p class="text-center user-signin">
+    <%= link_to "ログイン", new_user_session_path, class: "btn btn-light text-primary" %>
+  </p>
+  <br>
+  <p class="text-center text-white">会員登録がお済みではない方はこちら</p>
+  <p class="text-center user-signup">
+    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-light text-primary" %>
+  </p>
+  <br>
+  <p class="text-center text-white">ゲストで参加したい方はこちら</p>
+  <p class="text-center user-guest">
+    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-light text-primary" %>
+  </p>
 </div>
